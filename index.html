@@ -3,671 +3,729 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colégio Estadual São Cristóvão | Capanema - PR</title>
+    <title>Colégio Estadual São Cristóvão • São José dos Pinhais - PR</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;family=Inter:wght@400;500&amp;display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .nav-link { transition: all 0.3s; }
-        .nav-link:hover { transform: translateY(-2px); color: #1e40af; }
-        .hero-bg { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://picsum.photos/id/1015/1920/1080') center/cover no-repeat; }
-        .card-hover { transition: all 0.4s; }
-        .card-hover:hover { transform: scale(1.05); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
-        .chat-bubble { max-width: 75%; }
-        .modal { animation: modalPop 0.3s ease-out; }
-        @keyframes modalPop { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
-        .school-red { background-color: #9f1239; }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+        
+        :root {
+            --azul-escola: #003087;
+            --verde-escola: #006400;
+        }
+        
+        .tail-container {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(0, 48, 135, 0.85), rgba(0, 100, 0, 0.75)), url('https://picsum.photos/id/1015/1920/1080') center/cover no-repeat;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #00ff9d;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .card-produto {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .card-produto:hover {
+            transform: scale(1.08) rotate(2deg);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+        }
+        
+        .chatbot {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+        
+        .report-card {
+            transition: all 0.3s;
+        }
+        
+        .report-card:hover {
+            transform: translateY(-5px);
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
-
+<body class="tail-container bg-zinc-950 text-white">
     <!-- NAVBAR -->
-    <nav class="bg-white shadow-lg sticky top-0 z-50">
+    <nav class="bg-[#003087] border-b border-emerald-500 shadow-xl fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <div class="flex items-center gap-4">
-                <div class="w-12 h-12 bg-blue-700 rounded-full flex items-center justify-center text-white text-3xl font-bold">CSC</div>
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-3xl font-bold text-[#003087]">
+                    CSC
+                </div>
                 <div>
-                    <h1 class="text-2xl font-bold text-blue-900">Colégio Estadual São Cristóvão</h1>
-                    <p class="text-xs text-gray-500 -mt-1">Capanema • Paraná • Desde 1962</p>
+                    <h1 class="text-2xl font-bold tracking-tighter">Colégio Estadual</h1>
+                    <p class="text-emerald-400 text-sm -mt-1">São Cristóvão</p>
                 </div>
             </div>
 
-            <div class="hidden md:flex items-center gap-8 text-lg font-medium">
-                <a href="#home" class="nav-link text-gray-700 hover:text-blue-700">Início</a>
-                <a href="#sobre" class="nav-link text-gray-700 hover:text-blue-700">História</a>
-                <a href="#galeria" class="nav-link text-gray-700 hover:text-blue-700">Galeria</a>
-                <a href="#reclamacoes" class="nav-link text-gray-700 hover:text-blue-700">Reclamações</a>
-                <a href="#loja" class="nav-link text-gray-700 hover:text-blue-700">Loja</a>
-                <a href="#cardapio" class="nav-link text-gray-700 hover:text-blue-700">Cardápio</a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#inicio" onclick="navigateTo('inicio')" class="nav-link text-white hover:text-emerald-400">INÍCIO</a>
+                <a href="#historia" onclick="navigateTo('historia')" class="nav-link text-white hover:text-emerald-400">HISTÓRIA</a>
+                <a href="#reclamacoes" onclick="navigateTo('reclamacoes')" class="nav-link text-white hover:text-emerald-400">RECLAMAÇÕES</a>
+                <a href="#loja" onclick="navigateTo('loja')" class="nav-link text-white hover:text-emerald-400">LOJA DO COLÉGIO</a>
             </div>
 
-            <div class="flex items-center gap-4">
-                <div id="user-info" class="hidden items-center gap-3">
-                    <span id="user-name" class="font-medium text-sm"></span>
-                    <button onclick="logout()" class="text-red-600 hover:text-red-700 text-sm font-medium flex items-center gap-1">
-                        <i class="fas fa-sign-out-alt"></i> Sair
-                    </button>
-                </div>
-                
-                <button onclick="showLoginModal()" id="btn-login"
-                    class="px-6 py-2.5 bg-white border-2 border-blue-700 text-blue-700 rounded-full font-semibold hover:bg-blue-700 hover:text-white transition-all flex items-center gap-2">
-                    <i class="fas fa-user"></i> Login
-                </button>
-                <button onclick="showRegisterModal()" id="btn-register"
-                    class="px-6 py-2.5 bg-blue-700 text-white rounded-full font-semibold hover:bg-blue-800 transition-all flex items-center gap-2">
-                    <i class="fas fa-user-plus"></i> Cadastro
-                </button>
+            <div class="flex items-center gap-4" id="auth-buttons">
+                <!-- JS preenche aqui -->
             </div>
         </div>
     </nav>
 
-    <!-- HERO -->
-    <section id="home" class="hero-bg h-screen flex items-center text-white">
-        <div class="max-w-5xl mx-auto px-6 text-center">
-            <div class="max-w-2xl mx-auto">
-                <h2 class="text-6xl font-bold leading-tight mb-6">Bem-vindo ao Colégio Estadual São Cristóvão</h2>
-                <p class="text-2xl mb-10">Ensino Fundamental, Médio e Técnico em Desenvolvimento de Sistemas • Capanema/PR</p>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="#loja" class="px-10 py-4 bg-white text-blue-900 font-bold rounded-full text-lg hover:scale-105 transition">Ir à Loja</a>
-                    <a href="#reclamacoes" class="px-10 py-4 border-2 border-white font-bold rounded-full text-lg hover:bg-white hover:text-blue-900 transition">Relatar Problema</a>
+    <div class="pt-20"></div>
+
+    <!-- HERO / PÁGINA INICIAL -->
+    <section id="inicio" class="hero-bg h-screen flex items-center text-center relative">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="max-w-3xl mx-auto">
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full text-sm mb-6">
+                    <span class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></span>
+                    São José dos Pinhais • Paraná
+                </div>
+                <h1 class="text-7xl font-bold leading-none tracking-tighter mb-6" style="font-family: 'Playfair Display', serif;">
+                    COLÉGIO ESTADUAL<br>SÃO CRISTÓVÃO
+                </h1>
+                <p class="text-2xl text-emerald-200 mb-10">Educação pública de excelência desde 1970 • Ensino Fundamental • Médio • Técnico</p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="navigateTo('reclamacoes')" 
+                            class="bg-emerald-500 hover:bg-emerald-600 px-10 py-4 rounded-2xl font-semibold text-lg flex items-center gap-3 justify-center">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        RELATAR PROBLEMA
+                    </button>
+                    <button onclick="navigateTo('loja')" 
+                            class="border-2 border-white hover:bg-white hover:text-[#003087] px-10 py-4 rounded-2xl font-semibold text-lg flex items-center gap-3 justify-center transition-all">
+                        <i class="fas fa-store"></i>
+                        LOJA DO COLÉGIO
+                    </button>
                 </div>
             </div>
         </div>
-        
-        <!-- Botão flutuante do Bot -->
-        <div onclick="toggleChat()" 
-             class="fixed bottom-8 right-8 bg-blue-700 text-white w-16 h-16 rounded-2xl shadow-2xl flex items-center justify-center cursor-pointer hover:scale-110 transition z-50">
-            <i class="fas fa-robot text-3xl"></i>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/70 text-sm">
+            <p>Role para baixo</p>
+            <i class="fas fa-chevron-down animate-bounce mt-2"></i>
         </div>
     </section>
 
-    <!-- SOBRE / HISTÓRIA -->
-    <section id="sobre" class="py-20 bg-white">
+    <!-- HISTÓRIA -->
+    <section id="historia" class="py-24 bg-zinc-900">
         <div class="max-w-6xl mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h3 class="text-5xl font-bold text-blue-900 mb-6">Nossa História</h3>
-                    <div class="prose text-lg text-gray-700">
-                        <p>O Colégio Estadual São Cristóvão foi fundado em 1962 no bairro São Cristóvão, Capanema - PR. Inicialmente como Ginásio, hoje oferece Ensino Fundamental, Médio e o Curso Técnico em Desenvolvimento de Sistemas (integrado ao Ensino Médio).</p>
-                        <p>Localizado na Av. Sete de Setembro, 444, nossa escola atende centenas de alunos com infraestrutura moderna: salas climatizadas, quadras cobertas, laboratório de informática e equipe pedagógica dedicada.</p>
-                        <p>Endereço: Av. Sete de Setembro, 444 - Bairro São Cristóvão<br>Telefone: (46) 3552-1860<br>E-mail oficial: cnmsaocristovao@seed.pr.gov.br</p>
-                    </div>
+                    <h2 class="text-5xl font-bold mb-6 text-emerald-400">Nossa História</h2>
+                    <p class="text-lg text-zinc-300 leading-relaxed mb-8">
+                        O Colégio Estadual São Cristóvão, localizado na Rua Paulo Scherner, 380, Vila Palmira, 
+                        São José dos Pinhais-PR, é uma instituição pública de referência na Região Metropolitana de Curitiba.
+                    </p>
+                    <p class="text-lg text-zinc-300 leading-relaxed">
+                        Fundado na década de 1970, oferecemos Ensino Fundamental, Médio, Normal e Profissionalizante 
+                        (incluindo cursos técnicos em Serviços Jurídicos e outros). Transformamos vidas através da educação de qualidade, 
+                        com infraestrutura moderna, laboratórios equipados e professores dedicados.
+                    </p>
                     <div class="mt-10 flex gap-6">
-                        <div class="text-center">
-                            <div class="text-4xl font-bold text-blue-700">60+</div>
-                            <div class="text-sm text-gray-500">Anos de história</div>
+                        <div class="bg-zinc-800 p-6 rounded-3xl border border-emerald-500/30">
+                            <p class="text-4xl font-bold text-emerald-400">+50</p>
+                            <p class="text-sm text-zinc-400">Anos de história</p>
                         </div>
-                        <div class="text-center">
-                            <div class="text-4xl font-bold text-blue-700">3</div>
-                            <div class="text-sm text-gray-500">Níveis de ensino</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-4xl font-bold text-blue-700">1</div>
-                            <div class="text-sm text-gray-500">Curso Técnico em Dev de Sistemas</div>
+                        <div class="bg-zinc-800 p-6 rounded-3xl border border-emerald-500/30">
+                            <p class="text-4xl font-bold text-emerald-400">1.200+</p>
+                            <p class="text-sm text-zinc-400">Alunos</p>
                         </div>
                     </div>
                 </div>
-                <div class="rounded-3xl overflow-hidden shadow-2xl">
-                    <img src="https://picsum.photos/id/1015/800/600" alt="Escola São Cristóvão - Exterior" class="w-full h-full object-cover">
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://picsum.photos/id/1016/600/400" class="rounded-3xl shadow-2xl" alt="Escola">
+                    <img src="https://picsum.photos/id/201/600/400" class="rounded-3xl shadow-2xl mt-12" alt="Alunos">
+                    <img src="https://picsum.photos/id/160/600/400" class="rounded-3xl shadow-2xl" alt="Laboratório">
+                    <img src="https://picsum.photos/id/29/600/400" class="rounded-3xl shadow-2xl mt-12" alt="Pátio">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- GALERIA -->
-    <section id="galeria" class="py-20 bg-gray-100">
+    <section class="py-20 bg-black">
         <div class="max-w-6xl mx-auto px-6">
-            <h3 class="text-4xl font-bold text-center mb-12 text-blue-900">Conheça Nossa Escola</h3>
+            <h2 class="text-4xl font-bold text-center mb-12">Galeria do Colégio</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <img src="https://picsum.photos/id/1016/600/400" alt="Quadra coberta" class="rounded-2xl shadow-xl card-hover">
-                <img src="https://picsum.photos/id/160/600/400" alt="Sala de aula" class="rounded-2xl shadow-xl card-hover">
-                <img src="https://picsum.photos/id/201/600/400" alt="Laboratório de informática" class="rounded-2xl shadow-xl card-hover">
-                <img src="https://picsum.photos/id/251/600/400" alt="Alunos em aula técnica" class="rounded-2xl shadow-xl card-hover">
+                <img src="https://picsum.photos/id/1015/600/400" class="rounded-3xl hover:scale-105 transition-transform" alt="">
+                <img src="https://picsum.photos/id/201/600/400" class="rounded-3xl hover:scale-105 transition-transform" alt="">
+                <img src="https://picsum.photos/id/160/600/400" class="rounded-3xl hover:scale-105 transition-transform" alt="">
+                <img src="https://picsum.photos/id/29/600/400" class="rounded-3xl hover:scale-105 transition-transform" alt="">
             </div>
-            <p class="text-center text-sm text-gray-500 mt-8">Fotos reais da nossa infraestrutura em Capanema/PR</p>
         </div>
     </section>
 
     <!-- RECLAMAÇÕES -->
-    <section id="reclamacoes" class="py-20 bg-white">
+    <section id="reclamacoes" class="py-24 bg-zinc-950 border-t border-b border-emerald-900">
         <div class="max-w-4xl mx-auto px-6">
-            <h3 class="text-4xl font-bold text-center mb-4">Relate um Problema</h3>
-            <p class="text-center text-gray-600 mb-12">Viu uma lâmpada queimada? Problema no banheiro? Envie foto e descrição. Apenas o administrador acessa as reclamações.</p>
-            
-            <div id="complaint-form" class="bg-gray-100 p-8 rounded-3xl">
-                <div class="grid md:grid-cols-2 gap-6">
-                    <input id="complaint-title" type="text" placeholder="Título do problema (ex: Lâmpada queimada no lab)" 
-                           class="px-6 py-4 rounded-2xl border focus:outline-none focus:border-blue-600">
-                    <input id="complaint-desc" type="text" placeholder="Descrição detalhada" 
-                           class="px-6 py-4 rounded-2xl border focus:outline-none focus:border-blue-600">
-                </div>
-                <div class="mt-6">
-                    <label class="block text-sm mb-2">Foto do problema (opcional)</label>
-                    <input id="complaint-photo" type="file" accept="image/*" 
-                           class="block w-full text-sm text-gray-500 file:mr-4 file:py-3 file:px-8 file:rounded-2xl file:border-0 file:bg-blue-600 file:text-white">
-                    <div id="photo-preview" class="mt-4 hidden"></div>
-                </div>
-                <button onclick="submitComplaint()" 
-                        class="mt-8 w-full py-5 bg-red-600 hover:bg-red-700 text-white font-bold text-xl rounded-2xl transition">
-                    Enviar Reclamação
-                </button>
+            <div class="text-center mb-12">
+                <h2 class="text-5xl font-bold mb-3">Reclamações e Manutenção</h2>
+                <p class="text-xl text-emerald-300">Ajude-nos a manter nossa escola impecável!</p>
             </div>
 
-            <!-- Área Admin -->
-            <div id="admin-panel" class="hidden mt-16 bg-red-50 border border-red-200 p-8 rounded-3xl">
-                <h4 class="font-bold text-xl mb-6 flex items-center gap-3"><i class="fas fa-shield-alt"></i> Painel do Administrador (m.schlindwein@escola.pr.gov.br)</h4>
-                <div id="complaints-list" class="space-y-6"></div>
+            <div class="bg-zinc-900 rounded-3xl p-10">
+                <!-- Formulário de reclamação -->
+                <div id="form-reclamacao">
+                    <h3 class="text-2xl mb-6 font-semibold">Relate um problema</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <input id="titulo-reclamacao" type="text" placeholder="Título (ex: Lâmpada queimada no laboratório)" 
+                               class="bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-emerald-500">
+                        <input id="foto-reclamacao" type="file" accept="image/*" 
+                               class="bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 focus:outline-none">
+                    </div>
+                    <textarea id="desc-reclamacao" rows="5" placeholder="Descreva o problema com detalhes..." 
+                              class="w-full mt-6 bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 focus:outline-none"></textarea>
+                    
+                    <button onclick="enviarReclamacao()" 
+                            class="mt-8 w-full bg-emerald-500 hover:bg-emerald-600 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3">
+                        <i class="fas fa-paper-plane"></i>
+                        ENVIAR RECLAMAÇÃO COM FOTO
+                    </button>
+                </div>
+
+                <!-- Área do Admin -->
+                <div id="area-admin" class="hidden">
+                    <h3 class="text-2xl mb-6 font-semibold text-red-400 flex items-center gap-3">
+                        <i class="fas fa-shield-alt"></i>
+                        Painel Administrativo - Reclamações Recebidas
+                    </h3>
+                    <div id="lista-reclamacoes" class="space-y-6"></div>
+                </div>
             </div>
+            
+            <p class="text-center text-xs text-zinc-500 mt-8">
+                Apenas o e-mail <span class="font-mono text-emerald-400">m.schlindwein@escola.pr.gov.br</span> tem acesso completo às reclamações.
+            </p>
         </div>
     </section>
 
     <!-- LOJA -->
-    <section id="loja" class="py-20 bg-gray-900 text-white">
-        <div class="max-w-6xl mx-auto px-6">
+    <section id="loja" class="py-24 bg-zinc-900">
+        <div class="max-w-7xl mx-auto px-6">
             <div class="flex justify-between items-end mb-12">
                 <div>
-                    <h3 class="text-5xl font-bold">Loja Oficial do Colégio</h3>
-                    <p class="text-blue-400 text-xl">Uniformes e produtos exclusivos</p>
+                    <h2 class="text-5xl font-bold">Loja do Colégio</h2>
+                    <p class="text-emerald-400 text-xl">Uniformes oficiais • Qualidade e orgulho</p>
                 </div>
-                <button onclick="showCart()" class="flex items-center gap-3 bg-white text-gray-900 px-8 py-4 rounded-3xl font-bold">
+                <button onclick="verCarrinho()" 
+                        class="flex items-center gap-3 bg-white text-[#003087] px-8 py-4 rounded-2xl font-bold">
                     <i class="fas fa-shopping-cart"></i>
-                    Carrinho (<span id="cart-count">0</span>)
+                    CARRINHO (<span id="contador-carrinho">0</span>)
                 </button>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <!-- Produtos -->
-                <div class="bg-gray-800 rounded-3xl overflow-hidden card-hover">
-                    <img src="https://picsum.photos/id/201/400/300" alt="Camisa" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h5 class="font-bold text-xl">Camisa Polo Oficial</h5>
-                        <p class="text-blue-400">R$ 59,90</p>
-                        <button onclick="addToCart(0)" class="mt-4 w-full py-3 bg-blue-600 rounded-2xl">Adicionar ao carrinho</button>
-                    </div>
-                </div>
-                <div class="bg-gray-800 rounded-3xl overflow-hidden card-hover">
-                    <img src="https://picsum.photos/id/160/400/300" alt="Bermuda" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h5 class="font-bold text-xl">Bermuda Uniforme</h5>
-                        <p class="text-blue-400">R$ 44,90</p>
-                        <button onclick="addToCart(1)" class="mt-4 w-full py-3 bg-blue-600 rounded-2xl">Adicionar ao carrinho</button>
-                    </div>
-                </div>
-                <div class="bg-gray-800 rounded-3xl overflow-hidden card-hover">
-                    <img src="https://picsum.photos/id/251/400/300" alt="Calça" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h5 class="font-bold text-xl">Calça Jeans Escolar</h5>
-                        <p class="text-blue-400">R$ 69,90</p>
-                        <button onclick="addToCart(2)" class="mt-4 w-full py-3 bg-blue-600 rounded-2xl">Adicionar ao carrinho</button>
-                    </div>
-                </div>
-                <div class="bg-gray-800 rounded-3xl overflow-hidden card-hover">
-                    <img src="https://picsum.photos/id/30/400/300" alt="Moletom" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h5 class="font-bold text-xl">Moletom com Capuz</h5>
-                        <p class="text-blue-400">R$ 89,90</p>
-                        <button onclick="addToCart(3)" class="mt-4 w-full py-3 bg-blue-600 rounded-2xl">Adicionar ao carrinho</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CARDÁPIO -->
-    <section id="cardapio" class="py-20 bg-white">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h3 class="text-4xl font-bold mb-6">Cardápio do Dia</h3>
-            <div id="menu-display" class="bg-emerald-600 text-white p-10 rounded-3xl text-2xl font-medium shadow-inner">
-                Carregando cardápio...
-            </div>
-            
-            <!-- Formulário apenas para admin -->
-            <div id="admin-menu-edit" class="hidden mt-10 bg-gray-100 p-8 rounded-3xl">
-                <h4 class="font-bold mb-4">Atualizar Cardápio (apenas administrador)</h4>
-                <textarea id="new-menu" rows="3" class="w-full p-6 rounded-2xl border text-lg"></textarea>
-                <button onclick="saveMenu()" class="mt-6 px-12 py-4 bg-emerald-600 text-white rounded-2xl font-bold">Salvar Cardápio</button>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" id="produtos-grid">
+                <!-- Produtos gerados por JS -->
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-blue-950 text-white py-16">
-        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-12">
+    <footer class="bg-black py-16">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-10 text-sm">
             <div>
-                <h4 class="font-bold text-2xl mb-4">Colégio Estadual São Cristóvão</h4>
-                <p class="text-blue-300">Av. Sete de Setembro, 444<br>Bairro São Cristóvão<br>Capanema - PR • 85760-000</p>
+                <h3 class="font-bold text-xl mb-4">Colégio Estadual São Cristóvão</h3>
+                <p class="text-zinc-400">Rua Paulo Scherner, 380 • Vila Palmira<br>São José dos Pinhais - PR • 83040-140</p>
+                <p class="mt-4 text-emerald-400">(41) 3283-5067</p>
             </div>
             <div>
-                <h4 class="font-bold mb-4">Contato</h4>
-                <p class="flex items-center gap-3"><i class="fas fa-phone"></i> (46) 3552-1860</p>
-                <p class="flex items-center gap-3"><i class="fas fa-envelope"></i> cnmsaocristovao@seed.pr.gov.br</p>
+                <h4 class="font-semibold mb-3">Links Rápidos</h4>
+                <ul class="space-y-2 text-zinc-400">
+                    <li><a href="#" onclick="navigateTo('inicio')" class="hover:text-white">Início</a></li>
+                    <li><a href="#" onclick="navigateTo('historia')" class="hover:text-white">História</a></li>
+                    <li><a href="#" onclick="navigateTo('reclamacoes')" class="hover:text-white">Reclamações</a></li>
+                    <li><a href="#" onclick="navigateTo('loja')" class="hover:text-white">Loja</a></li>
+                </ul>
             </div>
-            <div>
-                <h4 class="font-bold mb-4">Siga-nos</h4>
-                <a href="https://www.facebook.com/p/Col%C3%A9gio-Estadual-S%C3%A3o-Crist%C3%B3v%C3%A3o-61551755502302/" target="_blank" class="inline-flex items-center gap-3 hover:text-blue-400">
-                    <i class="fab fa-facebook text-3xl"></i> Facebook
-                </a>
+            <div class="text-right">
+                <p class="text-xs text-zinc-500">© 2026 Colégio Estadual São Cristóvão - Todos direitos reservados<br>
+                Site desenvolvido com ❤️ para os alunos</p>
             </div>
         </div>
-        <p class="text-center text-blue-400 text-sm mt-16">© 2026 Colégio Estadual São Cristóvão • Desenvolvido com ❤️ para a comunidade escolar</p>
     </footer>
 
-    <!-- MODAL LOGIN -->
-    <div id="login-modal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[999]">
-        <div class="modal bg-white rounded-3xl max-w-md w-full mx-4 p-8">
-            <h3 class="text-3xl font-bold mb-8 text-center">Fazer Login</h3>
-            <input id="login-email" type="email" placeholder="email@escola.pr.gov.br" 
-                   class="w-full px-6 py-5 border rounded-2xl mb-4 text-lg">
-            <input id="login-pass" type="password" placeholder="Senha" 
-                   class="w-full px-6 py-5 border rounded-2xl mb-8 text-lg">
-            <button onclick="doLogin()" 
-                    class="w-full py-5 bg-blue-700 text-white font-bold text-xl rounded-2xl">Entrar</button>
-            <p onclick="hideLoginModal()" class="text-center mt-6 text-gray-500 cursor-pointer">Fechar</p>
-        </div>
-    </div>
-
-    <!-- MODAL CADASTRO -->
-    <div id="register-modal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[999]">
-        <div class="modal bg-white rounded-3xl max-w-md w-full mx-4 p-8">
-            <h3 class="text-3xl font-bold mb-8 text-center">Cadastro de Aluno</h3>
-            <input id="reg-email" type="email" placeholder="seuemail@escola.pr.gov.br" class="w-full px-6 py-5 border rounded-2xl mb-4">
-            <input id="reg-pass" type="password" placeholder="Senha" class="w-full px-6 py-5 border rounded-2xl mb-4">
-            <input id="reg-birth" type="date" class="w-full px-6 py-5 border rounded-2xl mb-4">
-            <input id="reg-cgm" type="text" placeholder="CGM (número do aluno)" class="w-full px-6 py-5 border rounded-2xl mb-8">
-            <button onclick="doRegister()" class="w-full py-5 bg-blue-700 text-white font-bold text-xl rounded-2xl">Cadastrar</button>
-            <p onclick="hideRegisterModal()" class="text-center mt-6 text-gray-500 cursor-pointer">Fechar</p>
-        </div>
-    </div>
-
-    <!-- MODAL CARRINHO -->
-    <div id="cart-modal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[999]">
-        <div class="modal bg-white rounded-3xl max-w-lg w-full mx-4 p-8">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-3xl font-bold">Seu Carrinho</h3>
-                <button onclick="hideCart()" class="text-4xl text-gray-400">×</button>
+    <!-- MODAL LOGIN / CADASTRO -->
+    <div id="modal-auth" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-[999]">
+        <div class="bg-zinc-900 rounded-3xl p-10 max-w-md w-full mx-4">
+            <div class="flex justify-between mb-8">
+                <button onclick="showLogin()" id="tab-login" 
+                        class="px-8 py-3 font-bold border-b-4 border-emerald-400">LOGIN</button>
+                <button onclick="showRegister()" id="tab-register" 
+                        class="px-8 py-3 font-bold">CADASTRO</button>
+                <button onclick="closeModal()" class="text-3xl">×</button>
             </div>
-            <div id="cart-items" class="space-y-6 mb-8"></div>
-            <div class="border-t pt-6 flex justify-between text-2xl font-bold">
+
+            <!-- LOGIN -->
+            <div id="login-form">
+                <input id="email-login" type="email" placeholder="E-mail @escola.pr.gov.br" 
+                       class="w-full bg-zinc-800 rounded-2xl px-6 py-5 mb-4">
+                <input id="senha-login" type="password" placeholder="Senha" 
+                       class="w-full bg-zinc-800 rounded-2xl px-6 py-5 mb-8">
+                <button onclick="fazerLogin()" 
+                        class="w-full bg-white text-[#003087] py-5 rounded-2xl font-bold text-lg">ENTRAR</button>
+            </div>
+
+            <!-- CADASTRO -->
+            <div id="register-form" class="hidden">
+                <input id="email-cadastro" type="email" placeholder="E-mail @escola.pr.gov.br" 
+                       class="w-full bg-zinc-800 rounded-2xl px-6 py-5 mb-4">
+                <input id="senha-cadastro" type="password" placeholder="Senha" 
+                       class="w-full bg-zinc-800 rounded-2xl px-6 py-5 mb-4">
+                <input id="data-nasc" type="date" class="w-full bg-zinc-800 rounded-2xl px-6 py-5 mb-4">
+                <input id="cgm" type="text" placeholder="CGM (Cadastro Geral do Aluno)" 
+                       class="w-full bg-zinc-800 rounded-2xl px-6 py-5 mb-8">
+                <button onclick="fazerCadastro()" 
+                        class="w-full bg-emerald-500 py-5 rounded-2xl font-bold text-lg">CADASTRAR</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARRINHO MODAL -->
+    <div id="modal-carrinho" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-[999]">
+        <div class="bg-zinc-900 rounded-3xl max-w-lg w-full mx-4 p-8">
+            <h3 class="text-3xl font-bold mb-8 flex items-center justify-between">
+                Seu Carrinho
+                <button onclick="fecharCarrinho()" class="text-4xl leading-none">×</button>
+            </h3>
+            <div id="itens-carrinho" class="space-y-6 min-h-[200px]"></div>
+            
+            <div class="border-t border-zinc-700 pt-6 mt-6 flex justify-between text-2xl font-bold">
                 <span>Total</span>
-                <span id="cart-total">R$ 0,00</span>
+                <span id="total-carrinho">R$ 0,00</span>
             </div>
-            <button onclick="fakePayment()" 
-                    class="mt-8 w-full py-6 bg-green-600 text-white text-2xl font-bold rounded-3xl">Finalizar Compra (Pix Simulado)</button>
+            
+            <button onclick="finalizarCompra()" 
+                    class="mt-10 w-full bg-emerald-500 py-6 rounded-2xl text-xl font-bold">
+                    FINALIZAR COMPRA (Simulado)
+            </button>
         </div>
     </div>
 
-    <!-- CHAT BOT -->
-    <div id="chat-window" class="hidden fixed bottom-24 right-8 bg-white rounded-3xl shadow-2xl w-96 overflow-hidden z-[999]">
-        <div class="bg-blue-700 text-white p-5 flex items-center justify-between">
+    <!-- CHATBOT -->
+    <div onclick="toggleChat()" 
+         class="fixed bottom-8 right-8 bg-emerald-500 w-16 h-16 rounded-3xl flex items-center justify-center text-3xl shadow-2xl chatbot cursor-pointer z-[999]">
+        <i class="fas fa-robot"></i>
+    </div>
+
+    <!-- Janela do Chatbot -->
+    <div id="chat-window" class="hidden fixed bottom-28 right-8 bg-zinc-900 w-96 rounded-3xl shadow-2xl overflow-hidden z-[999]">
+        <div class="bg-emerald-600 px-6 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <i class="fas fa-robot text-3xl"></i>
+                <i class="fas fa-robot text-2xl"></i>
                 <div>
-                    <p class="font-bold">Bot São Cristóvão</p>
-                    <p class="text-xs">Técnico em Desenvolvimento de Sistemas</p>
+                    <p class="font-bold">Bot do CSC</p>
+                    <p class="text-xs">Assistente virtual</p>
                 </div>
             </div>
             <button onclick="toggleChat()" class="text-2xl">×</button>
         </div>
         
-        <div id="chat-messages" class="h-96 p-6 overflow-y-auto bg-gray-50 space-y-6"></div>
+        <div id="chat-messages" class="h-96 overflow-y-auto p-6 space-y-4 bg-zinc-950">
+            <!-- mensagens JS -->
+        </div>
         
-        <div class="p-4 border-t flex">
-            <input id="chat-input" type="text" placeholder="Pergunte sobre programação, aulas..." 
-                   class="flex-1 px-6 py-4 rounded-3xl border focus:outline-none"
-                   onkeypress="if(event.key==='Enter') sendBotMessage()">
-            <button onclick="sendBotMessage()" class="ml-3 bg-blue-700 text-white w-14 h-14 rounded-3xl">
-                <i class="fas fa-paper-plane"></i>
-            </button>
+        <div class="p-4 border-t border-zinc-700 flex">
+            <input id="chat-input" type="text" placeholder="Digite aqui..." 
+                   class="flex-1 bg-zinc-800 rounded-l-2xl px-6 py-4 focus:outline-none">
+            <button onclick="enviarMensagemChat()" 
+                    class="bg-emerald-500 px-8 rounded-r-2xl">→</button>
         </div>
     </div>
 
     <script>
-        // Tailwind script
-        tailwind.config = { content: ["*"], theme: { extend: {} } }
+        // Tailwind script já carregado
+        function initTailwind() {
+            // nada, só para garantir
+        }
 
-        // Dados em localStorage
-        let currentUser = null
-        let cart = JSON.parse(localStorage.getItem('cart')) || []
-        let complaints = JSON.parse(localStorage.getItem('complaints')) || []
-        let menuOfDay = localStorage.getItem('menuOfDay') || "Arroz, feijão, bife grelhado, salada e suco de laranja"
+        // Dados locais
+        let usuarioLogado = null;
+        let reclamacoes = JSON.parse(localStorage.getItem('reclamacoes')) || [];
+        let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+        let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
 
-        const products = [
-            { name: "Camisa Polo Oficial", price: 59.90 },
-            { name: "Bermuda Uniforme", price: 44.90 },
-            { name: "Calça Jeans Escolar", price: 69.90 },
-            { name: "Moletom com Capuz", price: 89.90 }
-        ]
+        const produtos = [
+            { id: 1, nome: "Camisa Polo Oficial", preco: 49.90, img: "https://picsum.photos/id/201/400/400" },
+            { id: 2, nome: "Bermuda Esportiva", preco: 39.90, img: "https://picsum.photos/id/160/400/400" },
+            { id: 3, nome: "Calça Jeans Uniforme", preco: 69.90, img: "https://picsum.photos/id/29/400/400" },
+            { id: 4, nome: "Moletom Canguru", preco: 89.90, img: "https://picsum.photos/id/1016/400/400" }
+        ];
 
-        // Atualiza UI de usuário
-        function updateUserUI() {
-            const info = document.getElementById('user-info')
-            const loginBtn = document.getElementById('btn-login')
-            const regBtn = document.getElementById('btn-register')
-            const nameEl = document.getElementById('user-name')
+        // Render produtos
+        function renderProdutos() {
+            const grid = document.getElementById('produtos-grid');
+            grid.innerHTML = '';
+            produtos.forEach(p => {
+                const div = document.createElement('div');
+                div.className = 'card-produto bg-zinc-800 rounded-3xl overflow-hidden';
+                div.innerHTML = `
+                    <img src="${p.img}" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h4 class="font-semibold text-xl">${p.nome}</h4>
+                        <p class="text-emerald-400 text-3xl font-bold mt-2">R$ ${p.preco.toFixed(2)}</p>
+                        <button onclick="adicionarAoCarrinho(${p.id})" 
+                                class="mt-6 w-full bg-white text-[#003087] py-4 rounded-2xl font-bold">
+                            ADICIONAR AO CARRINHO
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(div);
+            });
+        }
+
+        function adicionarAoCarrinho(id) {
+            const produto = produtos.find(p => p.id === id);
+            carrinho.push(produto);
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+            atualizarContadorCarrinho();
+            alert(`${produto.nome} adicionado ao carrinho! 🎉`);
+        }
+
+        function atualizarContadorCarrinho() {
+            document.getElementById('contador-carrinho').textContent = carrinho.length;
+        }
+
+        function verCarrinho() {
+            const modal = document.getElementById('modal-carrinho');
+            const lista = document.getElementById('itens-carrinho');
+            lista.innerHTML = '';
             
-            if (currentUser) {
-                info.classList.remove('hidden')
-                loginBtn.classList.add('hidden')
-                regBtn.classList.add('hidden')
-                nameEl.textContent = currentUser.email.split('@')[0]
-                
-                // Mostra painel admin
-                if (currentUser.email === "m.schlindwein@escola.pr.gov.br") {
-                    document.getElementById('admin-panel').classList.remove('hidden')
-                    document.getElementById('admin-menu-edit').classList.remove('hidden')
-                    renderComplaints()
+            if (carrinho.length === 0) {
+                lista.innerHTML = `<p class="text-center py-12 text-zinc-500">Seu carrinho está vazio...</p>`;
+            } else {
+                carrinho.forEach((item, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'flex justify-between items-center';
+                    div.innerHTML = `
+                        <div class="flex gap-4">
+                            <img src="${item.img}" class="w-16 h-16 rounded-2xl object-cover">
+                            <div>
+                                <p class="font-medium">${item.nome}</p>
+                                <p class="text-emerald-400">R$ ${item.preco.toFixed(2)}</p>
+                            </div>
+                        </div>
+                        <button onclick="removerDoCarrinho(${index})" class="text-red-500">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    `;
+                    lista.appendChild(div);
+                });
+            }
+            
+            const total = carrinho.reduce((acc, p) => acc + p.preco, 0);
+            document.getElementById('total-carrinho').textContent = `R$ ${total.toFixed(2)}`;
+            modal.classList.remove('hidden');
+        }
+
+        function removerDoCarrinho(index) {
+            carrinho.splice(index, 1);
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+            verCarrinho();
+            atualizarContadorCarrinho();
+        }
+
+        function fecharCarrinho() {
+            document.getElementById('modal-carrinho').classList.add('hidden');
+        }
+
+        function finalizarCompra() {
+            if (carrinho.length === 0) return;
+            alert('Compra finalizada com sucesso! (Simulação) 🛍️\nObrigado por apoiar o colégio!');
+            carrinho = [];
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+            fecharCarrinho();
+            atualizarContadorCarrinho();
+        }
+
+        // Auth
+        function atualizarAuthButtons() {
+            const container = document.getElementById('auth-buttons');
+            if (usuarioLogado) {
+                container.innerHTML = `
+                    <div class="flex items-center gap-4">
+                        <div class="text-right">
+                            <p class="text-sm text-emerald-400">${usuarioLogado.email}</p>
+                            ${usuarioLogado.email === 'm.schlindwein@escola.pr.gov.br' ? 
+                                '<span class="text-xs bg-red-500 px-3 py-1 rounded-full">ADMIN</span>' : ''}
+                        </div>
+                        <button onclick="logout()" 
+                                class="bg-zinc-800 hover:bg-red-500/20 text-red-400 px-6 py-3 rounded-2xl text-sm font-medium">
+                            SAIR
+                        </button>
+                    </div>
+                `;
+                if (usuarioLogado.email === 'm.schlindwein@escola.pr.gov.br') {
+                    document.getElementById('area-admin').classList.remove('hidden');
+                    renderReclamacoesAdmin();
                 }
             } else {
-                info.classList.add('hidden')
-                loginBtn.classList.remove('hidden')
-                regBtn.classList.remove('hidden')
-                document.getElementById('admin-panel').classList.add('hidden')
-                document.getElementById('admin-menu-edit').classList.add('hidden')
+                container.innerHTML = `
+                    <button onclick="openModal()" 
+                            class="bg-white text-[#003087] px-8 py-3 rounded-2xl font-semibold">LOGIN</button>
+                    <button onclick="openModal()" 
+                            class="bg-transparent border border-white px-8 py-3 rounded-2xl font-semibold">CADASTRAR</button>
+                `;
             }
         }
 
-        // Login
-        function showLoginModal() { document.getElementById('login-modal').classList.remove('hidden') }
-        function hideLoginModal() { document.getElementById('login-modal').classList.add('hidden') }
-        
-        function doLogin() {
-            const email = document.getElementById('login-email').value.trim()
-            const pass = document.getElementById('login-pass').value
-            if (!email || !pass) return alert("Preencha todos os campos")
+        function openModal() {
+            document.getElementById('modal-auth').classList.remove('hidden');
+            showLogin();
+        }
+
+        function closeModal() {
+            document.getElementById('modal-auth').classList.add('hidden');
+        }
+
+        function showLogin() {
+            document.getElementById('login-form').classList.remove('hidden');
+            document.getElementById('register-form').classList.add('hidden');
+            document.getElementById('tab-login').classList.add('border-b-4', 'border-emerald-400');
+            document.getElementById('tab-register').classList.remove('border-b-4', 'border-emerald-400');
+        }
+
+        function showRegister() {
+            document.getElementById('login-form').classList.add('hidden');
+            document.getElementById('register-form').classList.remove('hidden');
+            document.getElementById('tab-login').classList.remove('border-b-4', 'border-emerald-400');
+            document.getElementById('tab-register').classList.add('border-b-4', 'border-emerald-400');
+        }
+
+        function fazerCadastro() {
+            const email = document.getElementById('email-cadastro').value.trim();
+            const senha = document.getElementById('senha-cadastro').value;
+            const data = document.getElementById('data-nasc').value;
+            const cgm = document.getElementById('cgm').value;
+
+            if (!email.endsWith('@escola.pr.gov.br')) {
+                alert('O e-mail deve terminar com @escola.pr.gov.br');
+                return;
+            }
+            if (!senha || !data || !cgm) {
+                alert('Preencha todos os campos!');
+                return;
+            }
+
+            usuarios.push({ email, senha, data, cgm });
+            localStorage.setItem('usuarios', JSON.stringify(usuarios));
             
-            // Simulação (qualquer email @escola.pr.gov.br funciona)
-            if (email.endsWith('@escola.pr.gov.br') || email === "m.schlindwein@escola.pr.gov.br") {
-                currentUser = { email }
-                localStorage.setItem('currentUser', JSON.stringify(currentUser))
-                hideLoginModal()
-                updateUserUI()
-                alert(`Bem-vindo, ${email}!`)
+            alert('Cadastro realizado com sucesso! Agora faça login.');
+            closeModal();
+            showLogin();
+        }
+
+        function fazerLogin() {
+            const email = document.getElementById('email-login').value.trim();
+            const senha = document.getElementById('senha-login').value;
+
+            const user = usuarios.find(u => u.email === email && u.senha === senha);
+            
+            if (user || (email === 'm.schlindwein@escola.pr.gov.br' && senha === 'admin123')) {
+                usuarioLogado = { email };
+                localStorage.setItem('usuarioLogado', JSON.stringify(usuarioLogado));
+                closeModal();
+                atualizarAuthButtons();
+                alert(`Bem-vindo, ${email}!`);
             } else {
-                alert("Email deve terminar com @escola.pr.gov.br")
+                alert('E-mail ou senha incorretos!');
             }
-        }
-
-        // Cadastro
-        function showRegisterModal() { document.getElementById('register-modal').classList.remove('hidden') }
-        function hideRegisterModal() { document.getElementById('register-modal').classList.add('hidden') }
-        
-        function doRegister() {
-            const email = document.getElementById('reg-email').value.trim()
-            const pass = document.getElementById('reg-pass').value
-            const birth = document.getElementById('reg-birth').value
-            const cgm = document.getElementById('reg-cgm').value
-            
-            if (!email.endsWith('@escola.pr.gov.br')) return alert("O email deve ser @escola.pr.gov.br")
-            if (!pass || !birth || !cgm) return alert("Preencha todos os campos")
-            
-            currentUser = { email }
-            localStorage.setItem('currentUser', JSON.stringify(currentUser))
-            hideRegisterModal()
-            updateUserUI()
-            alert("Cadastro realizado com sucesso! Bem-vindo ao Colégio São Cristóvão!")
         }
 
         function logout() {
-            currentUser = null
-            localStorage.removeItem('currentUser')
-            updateUserUI()
-        }
-
-        // Carrinho
-        function addToCart(index) {
-            if (!currentUser) return alert("Faça login para comprar!")
-            cart.push(products[index])
-            localStorage.setItem('cart', JSON.stringify(cart))
-            document.getElementById('cart-count').textContent = cart.length
-            alert(`${products[index].name} adicionado ao carrinho!`)
-        }
-
-        function showCart() {
-            if (!currentUser) return alert("Faça login primeiro")
-            renderCart()
-            document.getElementById('cart-modal').classList.remove('hidden')
-        }
-        
-        function hideCart() {
-            document.getElementById('cart-modal').classList.add('hidden')
-        }
-
-        function renderCart() {
-            const container = document.getElementById('cart-items')
-            container.innerHTML = ''
-            let total = 0
-            
-            cart.forEach((item, i) => {
-                total += item.price
-                const div = document.createElement('div')
-                div.className = "flex justify-between items-center bg-gray-100 p-4 rounded-2xl"
-                div.innerHTML = `
-                    <span>${item.name}</span>
-                    <span class="font-medium">R$ ${item.price.toFixed(2)}</span>
-                    <button onclick="removeFromCart(${i})" class="text-red-500">×</button>
-                `
-                container.appendChild(div)
-            })
-            
-            document.getElementById('cart-total').textContent = `R$ ${total.toFixed(2)}`
-        }
-
-        function removeFromCart(i) {
-            cart.splice(i, 1)
-            localStorage.setItem('cart', JSON.stringify(cart))
-            renderCart()
-            document.getElementById('cart-count').textContent = cart.length
-        }
-
-        function fakePayment() {
-            if (cart.length === 0) return
-            alert("✅ Pagamento simulado via Pix realizado com sucesso!\n\nObrigado pela compra na Loja Oficial do Colégio São Cristóvão!")
-            cart = []
-            localStorage.setItem('cart', JSON.stringify(cart))
-            hideCart()
-            document.getElementById('cart-count').textContent = '0'
+            usuarioLogado = null;
+            localStorage.removeItem('usuarioLogado');
+            atualizarAuthButtons();
+            document.getElementById('area-admin').classList.add('hidden');
         }
 
         // Reclamações
-        function submitComplaint() {
-            if (!currentUser) return alert("Faça login para relatar!")
-            
-            const title = document.getElementById('complaint-title').value
-            const desc = document.getElementById('complaint-desc').value
-            const fileInput = document.getElementById('complaint-photo')
-            
-            if (!title || !desc) return alert("Preencha título e descrição")
-            
-            let photo = null
+        function enviarReclamacao() {
+            if (!usuarioLogado) {
+                alert('Faça login para enviar uma reclamação!');
+                openModal();
+                return;
+            }
+
+            const titulo = document.getElementById('titulo-reclamacao').value;
+            const descricao = document.getElementById('desc-reclamacao').value;
+            const fileInput = document.getElementById('foto-reclamacao');
+
+            if (!titulo || !descricao) {
+                alert('Preencha título e descrição!');
+                return;
+            }
+
+            let fotoBase64 = null;
             if (fileInput.files[0]) {
-                const reader = new FileReader()
+                const reader = new FileReader();
                 reader.onload = function(e) {
-                    photo = e.target.result
-                    saveComplaint(title, desc, photo)
-                }
-                reader.readAsDataURL(fileInput.files[0])
+                    fotoBase64 = e.target.result;
+                    salvarReclamacao(titulo, descricao, fotoBase64);
+                };
+                reader.readAsDataURL(fileInput.files[0]);
             } else {
-                saveComplaint(title, desc, null)
+                salvarReclamacao(titulo, descricao, null);
             }
         }
 
-        function saveComplaint(title, desc, photo) {
-            complaints.push({
+        function salvarReclamacao(titulo, descricao, foto) {
+            const nova = {
                 id: Date.now(),
-                title,
-                desc,
-                photo,
-                date: new Date().toLocaleDateString('pt-BR'),
-                user: currentUser.email
-            })
-            localStorage.setItem('complaints', JSON.stringify(complaints))
-            alert("Reclamação enviada com sucesso! O administrador foi notificado.")
+                emailAluno: usuarioLogado.email,
+                titulo,
+                descricao,
+                foto,
+                data: new Date().toLocaleString('pt-BR')
+            };
+            reclamacoes.push(nova);
+            localStorage.setItem('reclamacoes', JSON.stringify(reclamacoes));
+            
+            alert('Reclamação enviada com sucesso! 📸 Obrigado!');
             
             // Limpa form
-            document.getElementById('complaint-title').value = ''
-            document.getElementById('complaint-desc').value = ''
-            document.getElementById('complaint-photo').value = ''
-            
-            if (currentUser.email === "m.schlindwein@escola.pr.gov.br") renderComplaints()
+            document.getElementById('titulo-reclamacao').value = '';
+            document.getElementById('desc-reclamacao').value = '';
+            document.getElementById('foto-reclamacao').value = '';
         }
 
-        function renderComplaints() {
-            const container = document.getElementById('complaints-list')
-            container.innerHTML = ''
+        function renderReclamacoesAdmin() {
+            const container = document.getElementById('lista-reclamacoes');
+            container.innerHTML = '';
             
-            if (complaints.length === 0) {
-                container.innerHTML = '<p class="text-center text-gray-500">Nenhuma reclamação ainda.</p>'
-                return
+            if (reclamacoes.length === 0) {
+                container.innerHTML = `<p class="text-zinc-400 text-center py-12">Nenhuma reclamação ainda...</p>`;
+                return;
             }
             
-            complaints.forEach((c, i) => {
-                const div = document.createElement('div')
-                div.className = "bg-white p-6 rounded-2xl shadow border"
+            reclamacoes.forEach(r => {
+                const div = document.createElement('div');
+                div.className = 'report-card bg-zinc-800 p-6 rounded-3xl';
                 div.innerHTML = `
                     <div class="flex justify-between">
                         <div>
-                            <span class="font-bold">${c.title}</span>
-                            <p class="text-sm text-gray-500">${c.date} • ${c.user}</p>
+                            <p class="text-emerald-400 font-mono text-xs">${r.emailAluno}</p>
+                            <p class="font-bold text-xl mt-1">${r.titulo}</p>
+                            <p class="text-zinc-400 text-sm mt-3">${r.descricao}</p>
                         </div>
-                        <button onclick="deleteComplaint(${i})" class="text-red-600 text-xl">×</button>
+                        <div class="text-right text-xs text-zinc-500">${r.data}</div>
                     </div>
-                    <p class="mt-4">${c.desc}</p>
-                    \( {c.photo ? `<img src=" \){c.photo}" class="mt-4 rounded-xl max-h-64">` : ''}
-                `
-                container.appendChild(div)
-            })
+                    ${r.foto ? `<img src="${r.foto}" class="mt-6 rounded-2xl w-full max-h-64 object-cover">` : ''}
+                `;
+                container.appendChild(div);
+            });
         }
 
-        function deleteComplaint(i) {
-            if (confirm("Excluir esta reclamação?")) {
-                complaints.splice(i, 1)
-                localStorage.setItem('complaints', JSON.stringify(complaints))
-                renderComplaints()
+        // Navegação SPA
+        function navigateTo(secao) {
+            document.querySelectorAll('section').forEach(s => {
+                s.style.display = 'none';
+            });
+            
+            if (secao === 'inicio') {
+                document.getElementById('inicio').style.display = 'flex';
+            } else if (secao === 'historia') {
+                document.getElementById('historia').style.display = 'block';
+            } else if (secao === 'reclamacoes') {
+                document.getElementById('reclamacoes').style.display = 'block';
+            } else if (secao === 'loja') {
+                document.getElementById('loja').style.display = 'block';
             }
+            window.scrollTo(0, 0);
         }
 
-        // Cardápio
-        function renderMenu() {
-            document.getElementById('menu-display').innerHTML = `
-                <strong>Hoje:</strong><br>
-                ${menuOfDay}
-            `
-        }
-
-        function saveMenu() {
-            if (!currentUser || currentUser.email !== "m.schlindwein@escola.pr.gov.br") return
-            menuOfDay = document.getElementById('new-menu').value || menuOfDay
-            localStorage.setItem('menuOfDay', menuOfDay)
-            renderMenu()
-            alert("Cardápio atualizado para todos os alunos!")
-        }
-
-        // Bot
-        let botMessages = [
-            { q: "programação", a: "No Curso Técnico em Desenvolvimento de Sistemas você aprende HTML, CSS, JavaScript, Python, Banco de Dados e muito mais! Quer exemplo de código?" },
-            { q: "html", a: "Aqui vai um exemplo básico de HTML: &lt;h1&gt;Olá Escola!&lt;/h1&gt;" },
-            { q: "aula", a: "Qual matéria? Desenvolvimento de Sistemas, Matemática, Português? Posso ajudar com resumos!" },
-            { q: "sistemas", a: "O curso técnico em Desenvolvimento de Sistemas do Colégio São Cristóvão forma profissionais para o mercado de tecnologia!" }
-        ]
-
+        // Chatbot simples
         function toggleChat() {
-            const chat = document.getElementById('chat-window')
-            chat.classList.toggle('hidden')
+            const chat = document.getElementById('chat-window');
+            chat.classList.toggle('hidden');
+            
             if (!chat.classList.contains('hidden') && document.getElementById('chat-messages').children.length === 0) {
-                addBotMessage("Olá! Sou o Bot do Colégio São Cristóvão. Pergunte sobre aulas, programação ou o curso técnico em Desenvolvimento de Sistemas!")
+                adicionarMensagemBot('Olá! Sou o Bot do Colégio São Cristóvão 👋<br>Como posso ajudar hoje?');
             }
         }
 
-        function addBotMessage(text) {
-            const container = document.getElementById('chat-messages')
-            const div = document.createElement('div')
-            div.className = 'flex gap-3'
-            div.innerHTML = `
-                <div class="w-8 h-8 bg-blue-700 text-white rounded-full flex items-center justify-center flex-shrink-0">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <div class="chat-bubble bg-gray-200 p-4 rounded-3xl rounded-tl-none">${text}</div>
-            `
-            container.appendChild(div)
-            container.scrollTop = container.scrollHeight
+        function adicionarMensagemBot(texto) {
+            const container = document.getElementById('chat-messages');
+            const msg = document.createElement('div');
+            msg.className = 'bg-zinc-800 rounded-3xl p-5 max-w-[80%]';
+            msg.innerHTML = `<p>${texto}</p>`;
+            container.appendChild(msg);
+            container.scrollTop = container.scrollHeight;
         }
 
-        function sendBotMessage() {
-            const input = document.getElementById('chat-input')
-            const msg = input.value.trim().toLowerCase()
-            if (!msg) return
+        function enviarMensagemChat() {
+            const input = document.getElementById('chat-input');
+            const texto = input.value.trim();
+            if (!texto) return;
             
-            // Adiciona mensagem do usuário
-            const container = document.getElementById('chat-messages')
-            const userDiv = document.createElement('div')
-            userDiv.className = 'flex justify-end'
-            userDiv.innerHTML = `<div class="chat-bubble bg-blue-600 text-white p-4 rounded-3xl rounded-tr-none">${input.value}</div>`
-            container.appendChild(userDiv)
-            container.scrollTop = container.scrollHeight
+            const container = document.getElementById('chat-messages');
+            const msgUser = document.createElement('div');
+            msgUser.className = 'bg-emerald-500 text-right ml-auto rounded-3xl p-5 max-w-[80%]';
+            msgUser.innerHTML = `<p>${texto}</p>`;
+            container.appendChild(msgUser);
             
-            input.value = ''
+            input.value = '';
             
-            // Resposta do bot (simples)
+            // Respostas simples
             setTimeout(() => {
-                let answer = "Desculpe, não entendi. Tente perguntar sobre 'programação', 'aula' ou 'sistemas'!"
-                for (let item of botMessages) {
-                    if (msg.includes(item.q)) {
-                        answer = item.a
-                        break
-                    }
-                }
-                if (msg.includes("exemplo")) answer = "Aqui um exemplo de JavaScript: console.log('Olá Colégio São Cristóvão!');"
-                addBotMessage(answer)
-            }, 800)
+                let resposta = 'Obrigado pela mensagem! Em breve um atendente humano responderá.';
+                if (texto.toLowerCase().includes('horario')) resposta = 'Nosso horário é das 7h30 às 17h30 de segunda a sexta.';
+                if (texto.toLowerCase().includes('uniforme')) resposta = 'A loja oficial fica no link acima!';
+                if (texto.toLowerCase().includes('reclamacao')) resposta = 'Use a seção Reclamações para registrar problemas com foto.';
+                adicionarMensagemBot(resposta);
+            }, 800);
         }
 
         // Inicialização
-        function init() {
-            // Recupera usuário
-            const savedUser = localStorage.getItem('currentUser')
+        window.onload = function() {
+            // Tailwind
+            initTailwind();
+            
+            // Recuperar login
+            const savedUser = localStorage.getItem('usuarioLogado');
             if (savedUser) {
-                currentUser = JSON.parse(savedUser)
+                usuarioLogado = JSON.parse(savedUser);
             }
             
-            updateUserUI()
-            document.getElementById('cart-count').textContent = cart.length
+            // Render tudo
+            renderProdutos();
+            atualizarContadorCarrinho();
+            atualizarAuthButtons();
+            renderReclamacoesAdmin();
             
-            // Renderiza cardápio
-            renderMenu()
+            // Mostrar página inicial
+            document.getElementById('inicio').style.display = 'flex';
             
-            // Renderiza reclamações se admin
-            if (currentUser && currentUser.email === "m.schlindwein@escola.pr.gov.br") {
-                renderComplaints()
-            }
-            
-            // Foto preview
-            const photoInput = document.getElementById('complaint-photo')
-            photoInput.addEventListener('change', function(e) {
-                if (e.target.files[0]) {
-                    const reader = new FileReader()
-                    reader.onload = function(ev) {
-                        document.getElementById('photo-preview').innerHTML = `<img src="${ev.target.result}" class="max-h-48 rounded-xl">`
-                        document.getElementById('photo-preview').classList.remove('hidden')
-                    }
-                    reader.readAsDataURL(e.target.files[0])
-                }
-            })
-            
-            // Scroll suave
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    if (this.getAttribute('href') !== '#') {
-                        e.preventDefault()
-                        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' })
-                    }
-                })
-            })
-            
-            console.log('%c✅ Página do Colégio Estadual São Cristóvão carregada com sucesso!', 'color: #1e40af; font-size: 14px')
-        }
-
-        window.onload = init
+            // Mensagem inicial do bot (opcional)
+            console.log('%c✅ Site do Colégio São Cristóvão carregado com sucesso!', 'color:#00ff9d; font-size:13px');
+        };
     </script>
 </body>
 </html>
