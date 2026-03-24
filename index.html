@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Colégio Estadual São Cristóvão • São José dos Pinhais - PR</title>
+  <title>Colégio Estadual São Cristóvão • Capanema - PR</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
@@ -68,7 +68,6 @@
       transform: translateY(-5px);
     }
 
-    /* Melhoria: sombra suave no painel admin */
     .admin-card {
       box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3);
     }
@@ -103,19 +102,31 @@
 
   <div class="pt-20"></div>
 
-  <!-- HERO / PÁGINA INICIAL -->
+  <!-- HERO / PÁGINA INICIAL (AGORA COM DESCRIÇÃO COMPLETA DO COLÉGIO) -->
   <section id="inicio" class="hero-bg h-screen flex items-center text-center relative">
     <div class="max-w-5xl mx-auto px-6">
       <div class="max-w-3xl mx-auto">
         <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full text-sm mb-6">
           <span class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></span>
-          São José dos Pinhais • Paraná
+          Capanema • Paraná
         </div>
+        
         <h1 class="text-7xl font-bold leading-none tracking-tighter mb-6" style="font-family: 'Playfair Display', serif;">
           COLÉGIO ESTADUAL<br>SÃO CRISTÓVÃO
         </h1>
-        <p class="text-2xl text-emerald-200 mb-10">Educação pública de excelência desde 1970 • Ensino Fundamental • Médio • Técnico</p>
         
+        <p class="text-2xl text-emerald-200 mb-6">
+          Educação pública de excelência desde 1970 • Ensino Fundamental (6º ao 9º ano) • Ensino Médio (1º ao 3º ano) • Curso Técnico em Desenvolvimento de Sistemas
+        </p>
+
+        <!-- DESCRIÇÃO COMPLETA DO COLÉGIO NA PÁGINA INICIAL -->
+        <div class="max-w-2xl mx-auto text-emerald-100 text-lg leading-relaxed mb-10 px-6">
+          Localizado em Capanema, Paraná, o Colégio Estadual São Cristóvão é uma instituição pública de referência que atende turmas do 6º ano do Ensino Fundamental ao 3º ano do Ensino Médio. 
+          Com infraestrutura moderna e professores altamente qualificados, oferecemos uma formação completa e inovadora. 
+          <strong class="text-emerald-300">Nosso grande diferencial é o Curso Técnico em Desenvolvimento de Sistemas</strong>, 
+          integrado ao Ensino Médio, que prepara nossos alunos para o mercado de tecnologia com disciplinas práticas de programação, desenvolvimento de software, bancos de dados, redes, inteligência artificial e muito mais.
+        </div>
+
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <button onclick="navigateTo('reclamacoes')" 
             class="bg-emerald-500 hover:bg-emerald-600 px-10 py-4 rounded-2xl font-semibold text-lg flex items-center gap-3 justify-center">
@@ -138,7 +149,7 @@
     </div>
   </section>
 
-  <!-- HISTÓRIA -->
+  <!-- HISTÓRIA (mantida exatamente como estava) -->
   <section id="historia" class="py-24 bg-zinc-900">
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid md:grid-cols-2 gap-16 items-center">
@@ -175,7 +186,7 @@
     </div>
   </section>
 
-  <!-- GALERIA (sempre visível, entre história e reclamações) -->
+  <!-- GALERIA -->
   <section class="py-20 bg-black">
     <div class="max-w-6xl mx-auto px-6">
       <h2 class="text-4xl font-bold text-center mb-12 text-emerald-400">Galeria do Colégio</h2>
@@ -197,7 +208,6 @@
       </div>
 
       <div class="bg-zinc-900 rounded-3xl p-10">
-        <!-- Formulário de reclamação -->
         <div id="form-reclamacao">
           <h3 class="text-2xl mb-6 font-semibold">Relate um problema</h3>
           <div class="grid md:grid-cols-2 gap-6">
@@ -216,7 +226,6 @@
           </button>
         </div>
 
-        <!-- Área do Admin -->
         <div id="area-admin" class="hidden mt-12 pt-8 border-t border-zinc-700">
           <h3 class="text-2xl mb-6 font-semibold text-red-400 flex items-center gap-3">
             <i class="fas fa-shield-alt"></i>
@@ -289,7 +298,6 @@
         <button onclick="closeModal()" class="text-3xl">×</button>
       </div>
 
-      <!-- LOGIN -->
       <div id="login-form">
         <input id="email-login" type="email" placeholder="E-mail @escola.pr.gov.br" 
           class="w-full bg-zinc-800 rounded-2xl px-6 py-5 mb-4">
@@ -299,7 +307,6 @@
           class="w-full bg-white text-[#003087] py-5 rounded-2xl font-bold text-lg">ENTRAR</button>
       </div>
 
-      <!-- CADASTRO -->
       <div id="register-form" class="hidden">
         <input id="email-cadastro" type="email" placeholder="E-mail @escola.pr.gov.br" 
           class="w-full bg-zinc-800 rounded-2xl px-6 py-5 mb-4">
@@ -341,7 +348,7 @@
     <i class="fas fa-robot"></i>
   </div>
 
-  <!-- Janela do Chatbot -->
+  <!-- Janela do Chatbot (MELHORADO) -->
   <div id="chat-window" class="hidden fixed bottom-28 right-8 bg-zinc-900 w-96 rounded-3xl shadow-2xl overflow-hidden z-[999]">
     <div class="bg-emerald-600 px-6 py-4 flex items-center justify-between">
       <div class="flex items-center gap-3">
@@ -466,7 +473,7 @@
       atualizarContadorCarrinho();
     }
 
-    // === AUTH - CADASTRO E LOGIN (melhorado: cadastro uma única vez + auto-login) ===
+    // === AUTH ===
     function atualizarAuthButtons() {
       const container = document.getElementById('auth-buttons');
       if (usuarioLogado) {
@@ -535,7 +542,6 @@
         return;
       }
 
-      // MELHORIA: verificar se o cadastro já existe (cadastro só uma vez)
       const existing = usuarios.find(u => u.email === email);
       if (existing) {
         alert('Este e-mail já está cadastrado! Faça login com suas credenciais.');
@@ -544,11 +550,9 @@
         return;
       }
 
-      // Salvar cadastro permanentemente
       usuarios.push({ email, senha, data, cgm });
       localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
-      // MELHORIA: login automático após cadastro (conforme solicitado)
       usuarioLogado = { email };
       localStorage.setItem('usuarioLogado', JSON.stringify(usuarioLogado));
       
@@ -581,7 +585,7 @@
       document.getElementById('area-admin').classList.add('hidden');
     }
 
-    // === RECLAMAÇÕES (salvas permanentemente + admin pode remover) ===
+    // === RECLAMAÇÕES ===
     function enviarReclamacao() {
       if (!usuarioLogado) {
         alert('Faça login para enviar uma reclamação!');
@@ -625,13 +629,11 @@
       
       alert('Reclamação enviada com sucesso! 📸 Obrigado! Ela ficará salva até ser resolvida pelo admin.');
       
-      // Limpa form
       document.getElementById('titulo-reclamacao').value = '';
       document.getElementById('desc-reclamacao').value = '';
       document.getElementById('foto-reclamacao').value = '';
     }
 
-    // MELHORIA: função para remover reclamação (admin marca como resolvida)
     function deletarReclamacao(id) {
       if (confirm('✅ Marcar esta reclamação como RESOLVIDA e removê-la do painel?')) {
         reclamacoes = reclamacoes.filter(r => r.id !== id);
@@ -664,7 +666,6 @@
           </div>
           ${r.foto ? `<img src="${r.foto}" class="mt-6 rounded-2xl w-full max-h-64 object-cover border border-emerald-500/30">` : ''}
           
-          <!-- Botão de resolução (só aparece para admin) -->
           <div class="flex justify-end mt-6">
             <button onclick="deletarReclamacao(${r.id})" 
               class="bg-green-600 hover:bg-green-700 px-8 py-3 rounded-2xl text-sm font-semibold flex items-center gap-2 transition-all">
@@ -677,7 +678,7 @@
       });
     }
 
-    // === NAVEGAÇÃO SPA (melhorada: esconde apenas as seções principais) ===
+    // === NAVEGAÇÃO SPA ===
     function navigateTo(secao) {
       const mainSections = document.querySelectorAll('#inicio, #historia, #reclamacoes, #loja');
       mainSections.forEach(s => {
@@ -696,13 +697,13 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // === CHATBOT (mantido igual, mas com mais respostas) ===
+    // === CHATBOT MELHORADO (responde perguntas sobre o curso técnico em Desenvolvimento de Sistemas) ===
     function toggleChat() {
       const chat = document.getElementById('chat-window');
       chat.classList.toggle('hidden');
       
       if (!chat.classList.contains('hidden') && document.getElementById('chat-messages').children.length === 0) {
-        adicionarMensagemBot('Olá! Sou o Bot do Colégio São Cristóvão 👋<br>Como posso ajudar hoje?');
+        adicionarMensagemBot('Olá! 👋 Sou o Bot do Colégio Estadual São Cristóvão em Capanema-PR.<br>Posso te ajudar com informações sobre a escola, o Curso Técnico em Desenvolvimento de Sistemas, matrículas, horários e muito mais!');
       }
     }
 
@@ -717,51 +718,83 @@
 
     function enviarMensagemChat() {
       const input = document.getElementById('chat-input');
-      const texto = input.value.trim();
+      const texto = input.value.trim().toLowerCase();
       if (!texto) return;
       
       const container = document.getElementById('chat-messages');
       const msgUser = document.createElement('div');
       msgUser.className = 'bg-emerald-500 text-right ml-auto rounded-3xl p-5 max-w-[80%]';
-      msgUser.innerHTML = `<p>${texto}</p>`;
+      msgUser.innerHTML = `<p>${input.value}</p>`;
       container.appendChild(msgUser);
       
       input.value = '';
-      
+
       setTimeout(() => {
-        let resposta = 'Obrigado pela mensagem! Em breve um atendente humano responderá.';
-        if (texto.toLowerCase().includes('horario')) resposta = 'Nosso horário é das 7h30 às 17h30 de segunda a sexta.';
-        if (texto.toLowerCase().includes('uniforme')) resposta = 'A loja oficial fica no link acima!';
-        if (texto.toLowerCase().includes('reclamacao')) resposta = 'Use a seção Reclamações para registrar problemas com foto. As reclamações ficam salvas!';
-        if (texto.toLowerCase().includes('cadastro')) resposta = 'Seu cadastro é feito apenas uma vez e fica salvo para sempre!';
+        let resposta = 'Obrigado pela mensagem! 😊 Em breve um atendente humano pode te ajudar com mais detalhes.';
+
+        // === RESPOSTAS INTELIGENTES SOBRE O CURSO TÉCNICO ===
+        if (texto.includes('curso técnico') || texto.includes('desenvolvimento de sistemas') || texto.includes('técnico em sistemas') || 
+            texto.includes('ti') || texto.includes('programação') || texto.includes('desenvolvimento') || texto.includes('sistemas')) {
+          resposta = `🎓 <strong>Curso Técnico em Desenvolvimento de Sistemas</strong><br>
+          Integrado ao Ensino Médio (1º ao 3º ano) no Colégio Estadual São Cristóvão em Capanema-PR.<br><br>
+          <strong>O que você vai aprender:</strong><br>
+          • Programação (Python, Java, JavaScript, HTML/CSS)<br>
+          • Desenvolvimento Web e Aplicativos Mobile<br>
+          • Bancos de Dados (SQL e NoSQL)<br>
+          • Redes de Computadores e Segurança<br>
+          • Inteligência Artificial e Lógica de Programação<br>
+          • Projetos reais com Git, Scrum e Metodologias Ágeis<br><br>
+          Ao final você sai com <strong>diploma técnico + Ensino Médio completo</strong>. Ideal para quem quer trabalhar com tecnologia logo após a escola!`;
+        }
+        else if (texto.includes('matrícula') || texto.includes('matricula') || texto.includes('inscrição') || texto.includes('inscrev')) {
+          resposta = 'As matrículas para o Curso Técnico em Desenvolvimento de Sistemas estão abertas! Venha à secretaria do colégio ou entre em contato pelo telefone (41) 3283-5067. São vagas limitadas!';
+        }
+        else if (texto.includes('grade') || texto.includes('disciplina') || texto.includes('matéria') || texto.includes('aulas')) {
+          resposta = 'A grade do Técnico em Desenvolvimento de Sistemas inclui: Fundamentos de Programação, Lógica, Banco de Dados, Desenvolvimento Web, Mobile, Redes, Ética e Legislação em TI, Projeto Integrador e Estágio Supervisionado.';
+        }
+        else if (texto.includes('duração') || texto.includes('quanto tempo') || texto.includes('anos')) {
+          resposta = 'O Curso Técnico em Desenvolvimento de Sistemas tem duração de 3 anos (junto com o Ensino Médio).';
+        }
+        else if (texto.includes('horario') || texto.includes('horário')) {
+          resposta = 'Nosso horário é das 7h30 às 17h30 de segunda a sexta. O curso técnico tem aulas práticas no período da tarde.';
+        }
+        else if (texto.includes('endereço') || texto.includes('onde') || texto.includes('localização') || texto.includes('capanema')) {
+          resposta = 'Estamos em Capanema, Paraná. Endereço completo: Rua Paulo Scherner, 380 – Vila Palmira.';
+        }
+        else if (texto.includes('6°') || texto.includes('fundamental') || texto.includes('médio')) {
+          resposta = 'Atendemos do 6º ano do Ensino Fundamental até o 3º ano do Ensino Médio com o Técnico em Desenvolvimento de Sistemas.';
+        }
+        else if (texto.includes('reclamação') || texto.includes('problema')) {
+          resposta = 'Use a seção Reclamações para registrar qualquer problema com foto. As reclamações ficam salvas até serem resolvidas!';
+        }
+        else if (texto.includes('cadastro') || texto.includes('login')) {
+          resposta = 'Seu cadastro é feito apenas uma vez e fica salvo para sempre no navegador. Depois é só fazer login!';
+        }
+
         adicionarMensagemBot(resposta);
       }, 800);
     }
 
-    // === INICIALIZAÇÃO (melhorada) ===
+    // === INICIALIZAÇÃO ===
     window.onload = function() {
-      // Recuperar login salvo
       const savedUser = localStorage.getItem('usuarioLogado');
       if (savedUser) {
         usuarioLogado = JSON.parse(savedUser);
       }
 
-      // Preparar navegação SPA (esconde todas as seções principais primeiro)
       const mainSections = document.querySelectorAll('#inicio, #historia, #reclamacoes, #loja');
       mainSections.forEach(s => {
         s.style.display = 'none';
       });
 
-      // Renderizar tudo
       renderProdutos();
       atualizarContadorCarrinho();
       atualizarAuthButtons();
       renderReclamacoesAdmin();
 
-      // Mostrar página inicial
       document.getElementById('inicio').style.display = 'flex';
 
-      console.log('%c✅ Site do Colégio São Cristóvão carregado com sucesso! (Cadastros e reclamações agora persistem 100% no navegador)', 'color:#00ff9d; font-size:13px');
+      console.log('%c✅ Site do Colégio São Cristóvão carregado com sucesso! Chatbot agora responde sobre o Curso Técnico em Desenvolvimento de Sistemas', 'color:#00ff9d; font-size:13px');
     };
   </script>
 </body>
