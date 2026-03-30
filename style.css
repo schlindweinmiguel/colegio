@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+:root {
+  --azul-escola: #003087;
+  --verde-escola: #006400;
+}
+
+.tail-container { 
+  font-family: 'Poppins', sans-serif; 
+}
+
+.hero-bg {
+  background: linear-gradient(rgba(0, 48, 135, 0.85), rgba(0, 100, 0, 0.75)), url('https://picsum.photos/id/1015/1920/1080') center/cover no-repeat;
+}
+
+.nav-link {
+  position: relative;
+  transition: all 0.3s;
+}
+
+.nav-link:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #00ff9d;
+  transition: width 0.3s;
+}
+
+.nav-link:hover:after { width: 100%; }
+
+.card-produto {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card-produto:hover {
+  transform: scale(1.08) rotate(2deg);
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+}
+
+.chatbot {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.report-card {
+  transition: all 0.3s;
+}
+
+.report-card:hover {
+  transform: translateY(-5px);
+}
